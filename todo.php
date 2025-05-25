@@ -5,9 +5,41 @@
     <title>Haftalık Görev Listesi</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: brightness(0.8);
+            color: #fff;
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         .day-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
@@ -40,6 +72,13 @@
 
         .task-list li {
             margin-bottom: 5px;
+            background-color: #e9ecef;
+            padding: 6px 10px;
+            border-radius: 6px;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .delete {
@@ -56,10 +95,25 @@
             color: white;
             border-radius: 6px;
             cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #save-all:hover {
             background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -82,14 +136,13 @@
     </div>
 
     <button id="save-all">🖫 Tümünü Kaydet</button>
-    <a href="login.php" style="display: block; margin-top: 20px;">Çıkış Yap</a>
+    <a href="login.php">Çıkış Yap</a>
 </div>
 
 <script>
     const dayBoxes = document.querySelectorAll(".day-box");
     const saveButton = document.getElementById("save-all");
 
-    
     window.onload = function() {
         dayBoxes.forEach(box => {
             const day = box.dataset.day;
@@ -101,7 +154,6 @@
         });
     };
 
-    
     dayBoxes.forEach(box => {
         const input = box.querySelector(".task-input");
         const ul = box.querySelector(".task-list");
@@ -117,7 +169,6 @@
             }
         });
 
-       
         ul.addEventListener("click", function(e) {
             if (e.target.classList.contains("delete")) {
                 e.target.parentElement.remove();
@@ -125,7 +176,6 @@
         });
     });
 
-   
     function addTaskToDay(ul, text) {
         const li = document.createElement("li");
         li.textContent = text;
@@ -136,7 +186,6 @@
         ul.appendChild(li);
     }
 
-    
     saveButton.addEventListener("click", function() {
         dayBoxes.forEach(box => {
             const day = box.dataset.day;
