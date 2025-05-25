@@ -15,7 +15,7 @@ body {
     align-items: center;
 }
 
-/* Giriş kutusu */
+
 .container {
     background: rgba(0, 0, 0, 0.85);  
     padding: 40px;
@@ -68,7 +68,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* To-do sayfası kutusu */
+
 .todo-wrapper {
     max-width: 1200px;
     width: 90%;
@@ -83,10 +83,10 @@ a:hover {
     margin-bottom: 30px;
 }
 
-/* Haftalık kutuları 2 satıra böl */
+
 .todo-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* her satırda 3 kutu */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
